@@ -16,7 +16,7 @@ module.exports = (_, argv) => ({
     publicPath:
       argv.mode === "development"
         ? `http://localhost:3000/`
-        : "https://microfrontend-six.vercel.app/",
+        : "https://container-iota-eight.vercel.app/",
   },
   devServer: {
     port: 3000,

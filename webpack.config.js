@@ -1,11 +1,13 @@
 const { ModuleFederationPlugin } = require("webpack").container;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const URL = process.env.REACT_APP_REMOTE_URL || "http://localhost:3001";
+const PORT = process.env.REACT_APP_PORT || 3000;
 
 module.exports = {
   entry: "./src/index.js",
   mode: "development",
   devServer: {
-    port: 3000,
+    port: PORT,
     },
     module: {
         rules: [
@@ -47,7 +49,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "container",
       remotes: {
-        microfrontend: "microfrontend@http://localhost:3001/remoteEntry.js",
+        microfrontend: `microfrontend@${URL}/remoteEntry.js`,
       },
       shared: {
         react: { singleton: true, eager: true },
